@@ -1,0 +1,33 @@
+name: "Christian Tests"
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+
+#on: workflow_dispatch
+on:
+  repository_dispatch:
+    types: [test, dev, deploy, deployInfra, deployApp, deployECS]
+        
+  #push:
+  #  branches:
+  #  - main
+  #  - release/*
+  #  - master
+  #  - dev 
+  #workflow_dispatch:
+  #pull_request:
+
+#env:
+#  tf_version: 'latest'
+#  tg_version: 'latest'
+#  tf_working_dir: 'environments/githubactions-tests/eu-west-1/easy-eks'
+#  tf_working_dir_vpc: 'environments/githubactions-tests/eu-west-1/easy-eks/vpc'
+#  tf_working_dir_peering: 'environments/githubactions-tests/eu-west-1/easy-eks/peering'
+#  tf_working_dir_eks: 'environments/githubactions-tests/eu-west-1/easy-eks/eks'
+
+jobs:
+  test:
+    name: 'test'
+    runs-on: self-hosted
+    steps: 
+      - name: 'debug info'
+        run: echo "OK!"
